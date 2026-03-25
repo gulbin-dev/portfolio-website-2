@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/gulbin-dev/portfolio-website-2/compare/v1.4.0-beta.0...v1.5.0) (2026-03-25)
+
+
+### Features
+
+* added global custom gsap hook ([a5874a9](https://github.com/gulbin-dev/portfolio-website-2/commit/a5874a9d89c7857706f7cdfbfb9109c7acff38d3))
+
 ## [1.4.0-beta.0](https://github.com/gulbin-dev/portfolio-website-2/compare/v1.3.0-beta.0...v1.4.0-beta.0) (2026-03-25)
 
 
