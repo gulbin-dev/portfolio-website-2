@@ -14,7 +14,6 @@ permissions:
 
 jobs:
   release-stable:
-    if: github.ref_name == 'master'
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
@@ -29,7 +28,6 @@ jobs:
           manifest-file: .release-please-manifest.json
 
   release-beta:
-    if: github.ref_name == 'pre-release'
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
