@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.0](https://github.com/gulbin-dev/portfolio-website-2/compare/v1.6.2...v1.7.0) (2026-03-26)
+
+
+### Features
+
+* added robots and sitemap ([#28](https://github.com/gulbin-dev/portfolio-website-2/issues/28)) ([4d2dc99](https://github.com/gulbin-dev/portfolio-website-2/commit/4d2dc995c03db885dd111efbd950b5baf7fcf389))
+
+
+### Bug Fixes
+
+* correct conditional logic ([25e5650](https://github.com/gulbin-dev/portfolio-website-2/commit/25e5650e6f21c69e0ab7bb261fc2f09850bd47a9))
+* rename file extension on sitemap ([#29](https://github.com/gulbin-dev/portfolio-website-2/issues/29)) ([27c7be1](https://github.com/gulbin-dev/portfolio-website-2/commit/27c7be1ea07095d180814c24e716faf13daed247))
+* rp to include pull_request event ([#30](https://github.com/gulbin-dev/portfolio-website-2/issues/30)) ([296255b](https://github.com/gulbin-dev/portfolio-website-2/commit/296255b394d31d96aaef380ef7f5bdb03af0bd21))
+
 ## [1.6.2](https://github.com/gulbin-dev/portfolio-website-2/compare/v1.1.0...v1.6.2) (2026-03-25)
 
 
