@@ -8,7 +8,9 @@ export default function PagesWrapper({
 }) {
   return (
     <div id="smooth-wrapper">
-      <div id="smooth-content">{children}</div>
+      <div id="smooth-content" className="bg-primary-color-darker">
+        {children}
+      </div>
     </div>
   );
 }
