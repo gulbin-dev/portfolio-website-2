@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import heroSectionGSAP from "@utils/gsap/hero-section-gsap";
 import cardSkillGSAP from "@utils/gsap/card-skill-gsap";
 import vsCodeSectionGSAP from "@utils/gsap/vsCode-section-gsap";
-export default function useGlobalGSAP() {
+export default function useHomePageGSAP() {
   const [resizeKey, setResizeKey] = useState(0);
 
   /**
