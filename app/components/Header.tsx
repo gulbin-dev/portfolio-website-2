@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
+
 export default function Header() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   useEffect(() => {
