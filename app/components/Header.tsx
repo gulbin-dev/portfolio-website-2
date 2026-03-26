@@ -22,7 +22,7 @@ export default function Header() {
       >
         <div className="max-w-180 w-full h-full flex justify-between items-center place-self-center px-3 py-3 tablet:py-0">
           <Link href="/" className="px-0 text-white">
-            <Image src="/logo.svg" alt="logo" width={100} height={50} />
+            <Image src="/logo.svg" alt="logo" width={100} height={58} />
           </Link>
           <NavLinks navStyle="hidden tablet:flex gap-6" />
           <button
