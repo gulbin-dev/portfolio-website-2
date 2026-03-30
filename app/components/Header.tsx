@@ -22,12 +22,18 @@ export default function Header() {
       >
         <div className="max-w-180 w-full h-full flex justify-between items-center place-self-center px-3 py-3 tablet:py-0">
           <Link href="/" className="px-0 text-white">
-            <Image src="/logo.svg" alt="logo" width={100} height={58} />
+            <Image
+              src="/logo.svg"
+              alt="logo"
+              width={100}
+              height={58}
+              loading="eager"
+            />
           </Link>
-          <NavLinks navStyle="hidden tablet:flex gap-6" />
+          <NavLinks navStyle="hidden header-nav gap-6 mr-8 tablet:flex" />
           <button
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-            className="flex flex-col gap-1  tablet:hidden"
+            className="flex flex-col gap-1 tablet:hidden"
           >
             <span className="hamburger-icon"></span>
             <span className="hamburger-icon"></span>
