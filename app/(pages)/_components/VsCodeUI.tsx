@@ -1,19 +1,30 @@
 "use client";
-import UI_Task from "@components/UI_Task";
 
+import UI_Task from "@components/UI_Task";
+import useCodeBlocks from "@hooks/home-page-gsap/vs-code-gsap/useCodeBlocks";
+import useCircles from "@hooks/home-page-gsap/vs-code-gsap/useCircles";
+import useTasks from "@hooks/home-page-gsap/vs-code-gsap/useTasks";
+import useVSHeader from "@/app/hooks/home-page-gsap/vs-code-gsap/useVSHeader";
 export default function VsCodeUI() {
+  useCodeBlocks();
+  useCircles();
+  useTasks();
+  useVSHeader();
   return (
     <section
       aria-hidden="true"
       className="section snap w-full h-full  section3-bg"
     >
-      <h2 className="vs-code-header pt-8 pb-3 text-heading-xl text-center">
+      <h2
+        id="vs-code-header"
+        className="vs-code-header pt-8 pb-3 text-heading-xl text-center"
+      >
         Solving Problem Into Smaller Tasks
       </h2>
 
       {/* dark background <div> simialr to vs code */}
       <div className=" bg-[#0F111A] w-full">
-        <div className="max-w-96 place-self-center px-3 flex flex-col py-4 text-heading-md w-full ">
+        <div className="max-w-96 place-self-center px-3 flex flex-col py-4 w-full ">
           <p id="issue" className="text-[#FC4646]">
             <span id="issue-span" className="text-[#65E913] font-bold">
               Issue:{" "}
