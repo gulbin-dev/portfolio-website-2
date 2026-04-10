@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { Dispatch, SetStateAction } from "react";
+
+/** Internal navigation links */
 export default function NavLinks({
   navStyle,
   anchorStyle,
@@ -13,7 +14,6 @@ export default function NavLinks({
   updateState?: Dispatch<SetStateAction<boolean>> | undefined;
 }) {
   const pathName = usePathname();
-  console.log(pathName);
 
   return (
     <nav>
