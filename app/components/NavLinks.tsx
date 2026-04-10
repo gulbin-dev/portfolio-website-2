@@ -15,10 +15,6 @@ export default function NavLinks({
   updateState?: Dispatch<SetStateAction<boolean>> | undefined;
 }) {
   const pathName = usePathname();
-<<<<<<< HEAD
-  console.log(pathName);
-=======
->>>>>>> development
 
   return (
     <nav>

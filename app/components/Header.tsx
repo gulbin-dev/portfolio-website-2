@@ -3,10 +3,7 @@ import { useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
 import Image from "next/image";
-<<<<<<< HEAD
-=======
 import useHeaderTransition from "@hooks/useHeaderTransition";
->>>>>>> development
 
 export default function Header() {
   useHeaderTransition();
@@ -39,10 +36,7 @@ export default function Header() {
           <button
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
             className="flex flex-col gap-1 tablet:hidden"
-<<<<<<< HEAD
-=======
             aria-label="Navigation menu"
->>>>>>> development
           >
             <span className="hamburger-icon"></span>
             <span className="hamburger-icon"></span>
