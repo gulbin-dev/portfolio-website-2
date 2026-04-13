@@ -34,13 +34,13 @@
     margin: 0 auto !important;
   }
   .list-card-skill {
-    @apply tablet:w-90 desktop:w-130 pt-5 tablet:pt-9;
+    @apply tablet:w-90 desktop:w-130 pt-5 tablet:pt-9 h-full;
   }
   .card-skill {
-    @apply: flex flex-col items-center;
+    @apply flex flex-col items-center;
   }
   .card-description {
-    @apply mb-1;
+    @apply mb-1 tablet:max-w-80 desktop:max-w-100;
   }
 
   .section3-bg {
@@ -212,9 +212,9 @@
     text-wrap: balance;
   }
   .tech-stack {
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
-    background-color: rgb(123, 80, 129);
+    background-color: rgb(190, 100, 202);
     filter: blur(50%);
   }
 }
