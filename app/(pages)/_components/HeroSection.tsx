@@ -1,14 +1,14 @@
 import useHeroSectionGSAP from "@/app/hooks/home-page-gsap/useHeroSectionGSAP";
 import Link from "next/link";
-export default function HeroSection({ windowSize }: { windowSize: number }) {
-  useHeroSectionGSAP(windowSize);
+export default function HeroSection() {
+  useHeroSectionGSAP();
   return (
     <section
       id="home-top"
       className="section w-full h-full overflow-hidden relative pt-10 linear-bg z-0 tablet:pt-1 tablet:h-screen"
     >
       <div className=" place-self-center max-w-180 tablet:flex">
-        <div className="relative z-1 px-3 tablet:mt-10">
+        <div className="relative z-1 px-3 tablet:mt-10 h-full">
           <h1
             aria-hidden
             className="split-words text-pretty text-heading-lg tablet:text-heading-xl pt-7 tablet:pt-0"
@@ -44,7 +44,7 @@ export default function HeroSection({ windowSize }: { windowSize: number }) {
             Helping teams deliver high-performance React applications with a
             focus on accessibility and SEO.
           </p>
-          <ul className="my-6 flex flex-col gap-5.5 w-fit tablet:my-4 tablet:gap-4">
+          <ul className="my-6 flex flex-col gap-5.5 w-fit h-full tablet:my-4 tablet:gap-4">
             <li className="list-discover-button opacity-0 group">
               <Link
                 href="/discover"
@@ -75,7 +75,7 @@ export default function HeroSection({ windowSize }: { windowSize: number }) {
             </li>
           </ul>
         </div>
-        <div className="relative h-60 w-full z-1  tablet:h-150 overflow-hidden">
+        <div className="relative h-60 w-full z-1 tablet:h-150 overflow-hidden">
           <canvas
             id="hero-canvas"
             className="absolute top-35 left-0 tablet:bottom-0"

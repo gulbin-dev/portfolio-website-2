@@ -3,9 +3,9 @@ import Image from "next/image";
 import { useRef } from "react";
 import Video from "./_cardskill-components/Video";
 /** card-skill component */
-export default function CardSkill({ windowSize }: { windowSize: number }) {
+export default function CardSkill() {
   const scopeRef = useRef<HTMLElement>(null);
-  useCardSkillGSAP(windowSize, scopeRef);
+  useCardSkillGSAP(scopeRef);
   return (
     <section
       id="pin-section"

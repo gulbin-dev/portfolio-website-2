@@ -3,7 +3,6 @@ import { useGSAP } from "@gsap/react";
 import { RefObject } from "react";
 /** Custom hook to handle GSAP animations in cards skill animation in the Home page */
 export default function useCardSkillGSAP(
-  windowSize: number,
   scopeRef: RefObject<HTMLElement | null>,
 ) {
   useGSAP(
@@ -14,7 +13,63 @@ export default function useCardSkillGSAP(
         // based on screen size and reduce motion
         mediaQueries,
         (context) => {
+          ScrollTrigger.normalizeScroll(true);
           const { reduceMotion, isSmallScreen } = context.conditions ?? {};
+          ScrollTrigger.refresh();
+
+          const listCardSkills =
+            gsap.utils.toArray<HTMLElement>(".list-card-skill");
+          const firstCard = listCardSkills[0];
+          const lastCard = listCardSkills[listCardSkills.length - 1];
+          const totalDistance =
+            firstCard && lastCard
+              ? lastCard.offsetTop - firstCard.offsetTop
+              : 0;
+          const snapPoints =
+            listCardSkills.length > 1
+              ? listCardSkills.map((card) =>
+                  totalDistance
+                    ? (card.offsetTop - firstCard.offsetTop) / totalDistance
+                    : 0,
+                )
+              : [0];
+
+          console.log("CardSkill snap values:", {
+            count: listCardSkills.length,
+            firstOffset: firstCard?.offsetTop,
+            lastOffset: lastCard?.offsetTop,
+            totalDistance,
+            snapPoints,
+            isSmallScreen,
+          });
+
+          const snapCardSkill =
+            !isSmallScreen &&
+            gsap.to(listCardSkills, {
+              y: -totalDistance,
+              opacity: 1,
+              ease: "none",
+              overwrite: true,
+            });
+
+          if (!isSmallScreen)
+            ScrollTrigger.create({
+              animation: snapCardSkill || undefined,
+              trigger: ".container-cards",
+              start: "top top",
+              end: "+=" + totalDistance,
+              pin: true,
+              pinSpacing: true,
+              scrub: 1,
+              snap: {
+                snapTo: snapPoints,
+                duration: 0.25,
+                ease: "power1.out",
+                directional: false,
+                delay: 0.2,
+              },
+            });
+
           //  wait for fonts to be loaded before animating SplitText
           document.fonts.ready.then(() => {
             const cardSkillP = SplitText.create(".card-skill-p", {
@@ -57,44 +112,11 @@ export default function useCardSkillGSAP(
                 "-=0.5",
               );
           });
-
-          const listCardSkills =
-            gsap.utils.toArray<HTMLElement>(".list-card-skill");
-          const cardHeight =
-            window.document &&
-            (document?.querySelector(".list-card-skill") as HTMLElement)
-              .offsetHeight;
-          const snapCardSkill =
-            !isSmallScreen &&
-            gsap.to(listCardSkills, {
-              yPercent: -100 * (listCardSkills.length - 1),
-              opacity: 1,
-              ease: "none",
-            });
-          if (!isSmallScreen)
-            ScrollTrigger.create({
-              animation: snapCardSkill || undefined,
-              trigger: ".container-cards",
-              start: "top top",
-              end: "+=" + cardHeight * (listCardSkills.length - 1),
-              pin: true,
-              pinSpacing: true,
-              scrub: 1,
-              snap: {
-                snapTo: [0, 0.57, 1],
-                duration: 0.25,
-                ease: "power1.out",
-                directional: false,
-                delay: 0.2,
-              },
-            });
         },
       );
     },
 
     {
-      dependencies: [windowSize],
-      revertOnUpdate: true,
       scope: scopeRef,
     },
   );
