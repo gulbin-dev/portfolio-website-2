@@ -62,7 +62,7 @@ export default function CardSkill() {
                 src="/accessibility.png"
                 alt=""
                 width={800}
-                height={500}
+                height={450}
                 className="tablet:max-w-80 desktop:max-w-100 aspect-video"
               />
               <div className="container-video"></div>
