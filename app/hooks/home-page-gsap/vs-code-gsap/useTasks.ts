@@ -17,6 +17,7 @@ export default function useTasks() {
           y: isReduceMotion ? 10 : 100,
         });
         ScrollTrigger.batch(".task", {
+          start: "top 98%",
           onEnter: (elements) => {
             gsap.to(elements, {
               y: 0,
@@ -27,7 +28,6 @@ export default function useTasks() {
           },
           onLeaveBack: (elements) =>
             gsap.set(elements, { opacity: 0, y: 100, overwrite: true }),
-          start: "top 98%",
         });
       },
     );

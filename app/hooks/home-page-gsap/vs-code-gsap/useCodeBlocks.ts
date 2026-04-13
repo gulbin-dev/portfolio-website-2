@@ -16,6 +16,7 @@ export default function useCodeBlocks() {
           y: isReduceMotion ? 10 : 100,
         });
         ScrollTrigger.batch(".code-snippet p", {
+          start: "top 98%",
           onEnter: (elements) => {
             gsap.to(elements, {
               y: 0,
@@ -26,7 +27,6 @@ export default function useCodeBlocks() {
           },
           onLeaveBack: (elements) =>
             gsap.set(elements, { opacity: 0, y: 100, overwrite: true }),
-          start: "top 98%",
         });
       },
     );
