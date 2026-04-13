@@ -160,11 +160,7 @@
     color: #c790e8;
   }
   .ui-circle {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: var(--color-col-neutral-1);
+    @apply bg-col-neutral-1 rounded-[50%] block w-1 h-1 tablet:w-1.5 tablet:h-1.5 desktop:w-2 desktop:h-2;
   }
 
   .clip {
