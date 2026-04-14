@@ -1,16 +1,15 @@
-"use client";
-
 import useCardSkillGSAP from "@/app/hooks/home-page-gsap/useCardSkillGSAP";
-
+import Image from "next/image";
+import Video from "./_cardskill-components/Video";
 /** card-skill component */
 export default function CardSkill() {
   useCardSkillGSAP();
   return (
     <section
       id="pin-section"
-      className="section snap w-full h-full relative tablet:h-screen overflow-hidden linear-bg pb-8 text-light-foreground"
+      className="section w-full! h-full relative mt-0! overflow-hidden linear-bg pb-8 text-light-foreground"
     >
-      <div id="pin-trigger">
+      <div className="overflow-hidden">
         <h2 className="card-skill-header opacity-100 text-heading-lg text-center text-pretty pt-5 tablet:pt-10 pb-1 px-2">
           Building Web Features that can stand out other brands
         </h2>
@@ -26,8 +25,8 @@ export default function CardSkill() {
           codebase.
         </p>
       </div>
-      <div className="container-cards mt-10! max-w-180 place-self-center">
-        <ul className=" flex flex-col">
+      <div className="container-cards mt-0  max-w-180 place-self-center">
+        <ul className=" flex flex-col px-3 items-center tablet:max-w-80 desktop:max-w-100">
           <li className="list-card-skill">
             <div className="card-skill">
               <div className="card-description">
@@ -38,7 +37,10 @@ export default function CardSkill() {
                   while reducing layout breaks and QA cycles.
                 </p>
               </div>
-              <video src="/responsive.webm" autoPlay loop muted></video>
+              <Video>
+                <source src="/responsive.webm" type="video/webm" />
+                <source src="/responsive.mp4" type="video/mp4" />
+              </Video>
             </div>
           </li>
           <li className="list-card-skill">
@@ -51,6 +53,13 @@ export default function CardSkill() {
                   strengthening SEO and indexing reliability.
                 </p>
               </div>
+              <Image
+                src="/accessibility.png"
+                alt=""
+                width={800}
+                height={500}
+                className="tablet:max-w-80 desktop:max-w-100"
+              />
               <div className="container-video"></div>
             </div>
           </li>
@@ -64,6 +73,10 @@ export default function CardSkill() {
                   codebase easier to debug, refactor, and scale over time.
                 </p>
               </div>
+              <Video>
+                <source src="/codebase.webm" type="video/webm" />
+                <source src="/codebase.mp4" type="video/mp4" />
+              </Video>
             </div>
           </li>
         </ul>

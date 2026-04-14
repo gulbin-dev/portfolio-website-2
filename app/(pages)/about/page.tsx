@@ -3,11 +3,13 @@
 import useWindowSizeListener from "@hooks/useWindowSizeListener";
 import useAboutImage from "@hooks/about-page-gsap/useAboutImage";
 import useDescription from "@hooks/about-page-gsap/useDescription";
-import { FaHandPaper } from "react-icons/fa";
-import { FaPaperPlane } from "react-icons/fa";
 import { useEffect, useRef } from "react";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import {
+  FaHandPaper,
+  FaPaperPlane,
+  FaGithubSquare,
+  FaLinkedin,
+} from "@utils/react-icons";
 /** About page content */
 export default function About() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -21,7 +23,7 @@ export default function About() {
   }, [windowSize]);
 
   return (
-    <main className="bg-primary-color-darker px-3">
+    <main className="bg-primary-color-darker px-3 mb-4">
       <section id="about-top" className="flex flex-col">
         <div className="canvas-container tablet:absolute h-75 w-full top-0 left-0  z-400 tablet:w-55 tablet:h-screen overflow-hidden ">
           <div className="hidden tablet:block absolute bg-primary-color-darker w-23 h-full"></div>
@@ -35,7 +37,7 @@ export default function About() {
           <div className="relative tablet:top-15 tablet:flex">
             {" "}
             <div className="hidden tablet:block min-w-40 min-h-15"></div>{" "}
-            <div className="flex flex-col tablet:grid tablet:auto-rows-auto tablet:max-h-20 tablet:auto-cols-min tablet:w-screen tablet:min-w-50 tablet:gap-y-5">
+            <div className="flex flex-col tablet:grid tablet:auto-rows-auto items-center tablet:max-h-20 tablet:auto-cols-min tablet:w-screen tablet:min-w-50 tablet:gap-y-5">
               {" "}
               <h1 className="text-heading-lg tablet:text-heading-xl col-start-1">
                 About Me
@@ -44,7 +46,7 @@ export default function About() {
                 className="inline-block place-self-center tablet:text-3xl tablet:truncate col-start-1"
                 aria-hidden="true"
               >
-                <span className="flex gap-1">
+                <span className="flex gap-1 justify-center">
                   {" "}
                   <span className="word-hi self-end">Hi!</span>{" "}
                   <span className="min-w-3">
@@ -60,18 +62,7 @@ export default function About() {
                 <span className="hidden tablet:block">
                   {" "}
                   <span className="">I&apos;m</span>{" "}
-                  <span className="name1 inline-block font-bold min-w-6">
-                    ▞ ▘●
-                  </span>{" "}
-                  <span className="name2 inline-block font-bold min-w-5">
-                    ▟ ▘●
-                  </span>{" "}
-                  <span className="name3 inline-block font-bold min-w-1">
-                    ▞ ▟
-                  </span>{" "}
-                  <span className="name4 inline-block font-bold min-w-12">
-                    ◣ ◄ ▀
-                  </span>{" "}
+                  <span className="name1 text-col-neutral-1 inline-block font-bold min-w-50 overflow-clip"></span>{" "}
                 </span>
               </p>
               <p
@@ -110,7 +101,7 @@ export default function About() {
                   a
                 </span>{" "}
               </span>
-              <span className="grid grid-cols-[repeat(10,50px)] gap-0.5 relative justify-baseline clip">
+              <span className="grid grid-cols-[repeat(9,50px)] gap-0.5 relative justify-baseline clip">
                 <span className="story-telling frontend py-1.5 px-2.5 rounded-2xl frontend-bg-linear col-start-1 col-span-3 row-start-1">
                   <span>frontend</span>
                 </span>
@@ -125,10 +116,15 @@ export default function About() {
                 {" "}
                 responsive,{" "}
               </span>
-              <span>
-                <span className="story-telling state lift-words">state</span>
-                <span className="story-telling hyphen lift-words">-</span>
-                <span className="story-telling driven lift-words">driven</span>
+              <span className="container-state-driven grid grid-cols-[repeat(4,50px)] clip content-start mb-0.75  rounded-lg">
+                <span className="story-telling state col-start-1 col-span-2 bg-action-color text-dark-foreground rounded-l-sm py-0.5 pl-1.5 flex gap-1.5 items-center z-2">
+                  state{" "}
+                  <span className="story-telling hyphen w-0.5 h-[3px] block bg-dark-foreground"></span>
+                </span>
+
+                <span className="story-telling driven col-start-3 col-span-2 bg-action-color text-dark-foreground py-0.5 pl-0.5 pr-1.5 rounded-r-sm block z-1">
+                  driven
+                </span>
               </span>{" "}
               {/*  SVG paper plane */}
               <div className="hidden tablet:block absolute left-90 top-25 min-w-20 min-h-30">
@@ -153,9 +149,8 @@ export default function About() {
               </span>{" "}
               <span className="story-telling slash">/</span>
               <span className="story-telling relative pb-0.5 typescript-after TypeScript">
-                TypeScript
+                TypeScript.
               </span>
-              <span className="story-telling period">.</span>
             </div>
           </div>{" "}
           {/* this <p> is used only for screen readers */}
@@ -165,9 +160,11 @@ export default function About() {
             JavaScript/TypeScript.
           </p>
         </div>
-        <div className="relative flex flex-col justify-center gap-x-2 text-4xl mt-2 tablet:mt-40">
-          <h2>Reach me out!</h2>
-          <ul>
+        <div className="relative flex flex-col items-center gap-x-2 mt-6 tablet:mt-40">
+          <h2 className="text-heading-lg! tablet:text-heading-xl!">
+            Reach out!
+          </h2>
+          <ul className="text-4xl flex gap-3 mt-2">
             <li>
               <button>
                 <FaGithubSquare />
@@ -181,8 +178,8 @@ export default function About() {
           </ul>
         </div>
         <div className="mt-5">
-          <h2 className="text-heading-lg">Tech Stack</h2>
-          <ul className="flex flex-wrap gap-y-4 gap-x-2 mt-3">
+          <h2 className="text-heading-lg text-center">Tech Stack</h2>
+          <ul className="flex flex-wrap gap-y-4 gap-x-2 mt-3 justify-center">
             <li>
               <span className="tech-stack">HTML</span>
             </li>

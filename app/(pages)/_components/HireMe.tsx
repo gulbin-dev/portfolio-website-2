@@ -1,9 +1,12 @@
-import { FaMapLocationDot } from "react-icons/fa6";
-import { MdEmail } from "react-icons/md";
-import { RiTeamFill } from "react-icons/ri";
-import { FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import useHireMeGSAP from "@/app/hooks/home-page-gsap/useHireMeGSAP";
+import {
+  FaMapLocationDot,
+  MdEmail,
+  RiTeamFill,
+  FaLinkedin,
+} from "@utils/react-icons";
+
 export default function HireMe() {
   useHireMeGSAP();
   return (
@@ -12,9 +15,9 @@ export default function HireMe() {
         Available for Hire
       </h2>
       <div className="max-w-180 place-self-center">
-        <ul className="flex flex-col gap-8 mt-6 tablet:flex-row">
+        <ul className="flex flex-col gap-8 mt-6 tablet:flex-row items-center">
           <li className="card-container">
-            <FaMapLocationDot className="location icons" aria-hidden />
+            <FaMapLocationDot className="icons" aria-hidden />
             <div className="content-container">
               <h3 className="fade-entry text-heading-lg">Location</h3>
               <h4 className="fade-entry">Remote/Worldwide</h4>
@@ -24,7 +27,7 @@ export default function HireMe() {
             </div>
           </li>
           <li className="card-container">
-            <RiTeamFill className="job-preference icons" aria-hidden />
+            <RiTeamFill className="icons" aria-hidden />
             <div className="content-container">
               <h3 className="fade-entry text-heading-lg">Job Preference</h3>
               <h4 className="fade-entry">Flexible</h4>
@@ -40,7 +43,7 @@ export default function HireMe() {
         <p className="fade-entry mt-2 text-center">
           You can reach me and let&apos;s work together
         </p>
-        <ul className="flex flex-col gap-8 mt-6 tablet:flex-row">
+        <ul className="flex flex-col gap-8 mt-6 tablet:flex-row tablet:justify-center">
           <li className="card-container">
             <FaLinkedin className="icons" />
             <div className="content-container">
