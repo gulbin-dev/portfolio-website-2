@@ -3,11 +3,9 @@ import Image from "next/image";
 import { useRef } from "react";
 import Video from "./_cardskill-components/Video";
 /** card-skill component */
-export default function CardSkill() {
+export default function CardSkill({ windowSize }: { windowSize: number }) {
   const scopeRef = useRef<HTMLElement>(null);
-  useCardSkillGSAP(scopeRef);
-
-  console.log("run  card-skill after resize");
+  useCardSkillGSAP(windowSize, scopeRef);
   return (
     <section
       id="pin-section"
@@ -30,8 +28,8 @@ export default function CardSkill() {
           codebase.
         </p>
       </div>
-      <div className="container-cards mt-0 tablet:mt-10! max-w-180 h-full  place-self-center">
-        <ul className="cards-list flex flex-col px-3 gap-1  items-center">
+      <div className="container-cards mt-0 tablet:mt-10! max-w-180 place-self-center">
+        <ul className=" flex flex-col px-3 items-center">
           <li className="list-card-skill">
             <div className="card-skill">
               <div className="card-description">
@@ -62,8 +60,8 @@ export default function CardSkill() {
                 src="/accessibility.png"
                 alt=""
                 width={800}
-                height={450}
-                className="tablet:max-w-80 desktop:max-w-100 aspect-video"
+                height={500}
+                className="tablet:max-w-80 desktop:max-w-100"
               />
               <div className="container-video"></div>
             </div>

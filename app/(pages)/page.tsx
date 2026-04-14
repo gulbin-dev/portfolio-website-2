@@ -5,23 +5,21 @@ import HireMe from "./_components/HireMe";
 import HeroSection from "./_components/HeroSection";
 import { ScrollTrigger } from "@utils/gsap/gsap";
 import useWindowSizeListener from "../hooks/useWindowSizeListener";
-import { useEffect } from "react";
 
 /** Home page content */
 export default function Home() {
   ScrollTrigger.refresh();
   const windowSize = useWindowSizeListener();
-  useEffect(() => {}, [windowSize]);
   return (
     <main>
       {/* hero-section */}
-      <HeroSection />
+      <HeroSection windowSize={windowSize} />
       {/* card-skill-section */}
-      <CardSkill />
+      <CardSkill windowSize={windowSize} />
       {/* VS code mimic */}
-      <VsCodeUI />
+      <VsCodeUI windowSize={windowSize} />
       {/* Hire me */}
-      <HireMe />
+      <HireMe windowSize={windowSize} />
     </main>
   );
 }

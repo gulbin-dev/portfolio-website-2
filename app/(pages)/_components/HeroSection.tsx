@@ -1,7 +1,7 @@
 import useHeroSectionGSAP from "@/app/hooks/home-page-gsap/useHeroSectionGSAP";
 import Link from "next/link";
-export default function HeroSection() {
-  useHeroSectionGSAP();
+export default function HeroSection({ windowSize }: { windowSize: number }) {
+  useHeroSectionGSAP(windowSize);
   return (
     <section
       id="home-top"
@@ -75,7 +75,7 @@ export default function HeroSection() {
             </li>
           </ul>
         </div>
-        <div className="relative h-60 w-full z-1 tablet:h-150 overflow-hidden">
+        <div className="relative h-60 w-full z-1  tablet:h-150 overflow-hidden">
           <canvas
             id="hero-canvas"
             className="absolute top-35 left-0 tablet:bottom-0"

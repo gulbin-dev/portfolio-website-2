@@ -7,7 +7,7 @@ export default function Video({
 }>) {
   return (
     <video
-      className="tablet:max-w-80 desktop:max-w-100 aspect-video"
+      className="tablet:max-w-80 desktop:max-w-100"
       autoPlay
       muted
       controls

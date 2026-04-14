@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { RefObject } from "react";
 /** Custom hook to handle GSAP animations in cards skill animation in the Home page */
 export default function useCardSkillGSAP(
+  windowSize: number,
   scopeRef: RefObject<HTMLElement | null>,
 ) {
   useGSAP(
@@ -13,8 +14,38 @@ export default function useCardSkillGSAP(
         // based on screen size and reduce motion
         mediaQueries,
         (context) => {
-          ScrollTrigger.normalizeScroll(true);
-          const { reduceMotion } = context.conditions ?? {};
+          const { reduceMotion, isSmallScreen } = context.conditions ?? {};
+
+          const listCardSkills = gsap.utils.toArray(".list-card-skill");
+          const cardHeight =
+            window.document &&
+            (document?.querySelector(".list-card-skill") as HTMLElement)
+              .offsetHeight;
+          const snapCardSkill =
+            !isSmallScreen &&
+            gsap.to(listCardSkills, {
+              yPercent: -100 * (listCardSkills.length - 1),
+              opacity: 1,
+              ease: "none",
+            });
+          if (!isSmallScreen)
+            ScrollTrigger.create({
+              animation: snapCardSkill || undefined,
+              anticipatePin: 0.5,
+              trigger: ".container-cards",
+              pin: true,
+              pinSpacing: true,
+              pinSpacer: scopeRef.current,
+              scrub: 1,
+              snap: {
+                snapTo: 1 / (listCardSkills.length - 1),
+                duration: 0.25,
+                ease: "power1.out",
+                directional: false,
+                delay: 0.3,
+              },
+              end: "+=" + cardHeight * (listCardSkills.length - 1),
+            });
 
           //  wait for fonts to be loaded before animating SplitText
           document.fonts.ready.then(() => {
@@ -31,17 +62,12 @@ export default function useCardSkillGSAP(
               },
             });
             timeline
-              .fromTo(
-                ".card-skill-header",
-                {
-                  y: -100,
-                  opacity: 0,
-                },
-                {
-                  y: 0,
-                  opacity: 1,
-                },
-              )
+              .from(".card-skill-header", {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                lazy: false,
+              })
               .from(
                 cardSkillP.words,
                 {
@@ -63,6 +89,8 @@ export default function useCardSkillGSAP(
     },
 
     {
+      dependencies: [windowSize],
+      revertOnUpdate: true,
       scope: scopeRef,
     },
   );
