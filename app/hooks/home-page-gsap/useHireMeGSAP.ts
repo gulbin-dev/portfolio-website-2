@@ -1,6 +1,6 @@
 import { gsap, mediaQueries, ScrollTrigger } from "@utils/gsap/gsap";
 import { useGSAP } from "@gsap/react";
-export default function useHireMeGSAP() {
+export default function useHireMeGSAP(isRevealed: boolean) {
   useGSAP(() => {
     const mm = gsap.matchMedia();
     mm.add(mediaQueries, (context) => {
@@ -43,5 +43,5 @@ export default function useHireMeGSAP() {
         }),
       );
     });
-  });
+  }, {dependencies: [isRevealed], revertOnUpdate: true});
 }

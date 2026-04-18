@@ -1,13 +1,16 @@
 import UI_Task from "@components/UI_Task";
-import useCodeBlocks from "@hooks/home-page-gsap/vs-code-gsap/useCodeBlocks";
-import useCircles from "@hooks/home-page-gsap/vs-code-gsap/useCircles";
-import useTasks from "@hooks/home-page-gsap/vs-code-gsap/useTasks";
-import useVSHeader from "@/app/hooks/home-page-gsap/vs-code-gsap/useVSHeader";
+import useCodeBlocks from "@/app/hooks/home-page-gsap/vs-code/useCodeBlocks";
+import useCircles from "@/app/hooks/home-page-gsap/vs-code/useCircles";
+import useTasks from "@/app/hooks/home-page-gsap/vs-code/useTasks";
+import useVSHeader from "@/app/hooks/home-page-gsap/vs-code/useVSHeader";
+import { useLoading } from "@/app/utils/LoadingContext";
+
 export default function VsCodeUI() {
-  useCodeBlocks();
-  useCircles();
-  useTasks();
-  useVSHeader();
+  const { isRevealed } = useLoading();
+  useCodeBlocks(isRevealed);
+  useCircles(isRevealed);
+  useTasks(isRevealed);
+  useVSHeader(isRevealed);
   return (
     <section
       aria-hidden="true"

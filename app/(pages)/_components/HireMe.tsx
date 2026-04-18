@@ -6,9 +6,11 @@ import {
   RiTeamFill,
   FaLinkedin,
 } from "@utils/react-icons";
+import { useLoading } from "@/app/utils/LoadingContext";
 
 export default function HireMe() {
-  useHireMeGSAP();
+  const { isRevealed } = useLoading();
+  useHireMeGSAP(isRevealed);
   return (
     <section className="section snap w-full h-full bg-primary-color-darker py-7 px-3">
       <h2 className="fade-entry text-heading-xl text-center">

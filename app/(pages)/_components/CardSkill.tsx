@@ -1,9 +1,12 @@
 import useCardSkillGSAP from "@/app/hooks/home-page-gsap/useCardSkillGSAP";
 import Image from "next/image";
-import Video from "./_cardskill-components/Video";
+import { Video } from "./_card-skill-components/CardSkill";
+import { useLoading } from "@/app/utils/LoadingContext";
 /** card-skill component */
+
 export default function CardSkill() {
-  useCardSkillGSAP();
+  const { isRevealed } = useLoading();
+  useCardSkillGSAP(isRevealed);
   return (
     <section
       id="pin-section"
@@ -38,8 +41,9 @@ export default function CardSkill() {
                 </p>
               </div>
               <Video>
-                <source src="/responsive.webm" type="video/webm" />
-                <source src="/responsive.mp4" type="video/mp4" />
+                <source src="/preview.webm" type="video/webm" />
+                <source src="/preview.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
               </Video>
             </div>
           </li>

@@ -6,6 +6,7 @@ import Footer from "@components/Footer";
 import PagesWrapper from "./PagesWrapper";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { LoadingProvider } from "../utils/LoadingContext";
 export const metadata: Metadata = {
   title: "GulbinDev | Frontend React Web Developer Portfolio",
   description:
@@ -65,7 +66,7 @@ const roboto = Roboto({
   display: "swap",
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -75,11 +76,13 @@ export default async function RootLayout({
       <body>
         <SpeedInsights />
         <Analytics />
-        <Header />
-        <PagesWrapper>
-          {children}
-          <Footer />
-        </PagesWrapper>
+        <LoadingProvider>
+          <Header />
+          <PagesWrapper>
+            {children}
+            <Footer />
+          </PagesWrapper>
+        </LoadingProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 import React from "react";
 
 import useSmoothScroll from "@hooks/useSmoothScroll";
+import { useLoading } from "../utils/LoadingContext";
 /**
  * A wrapper component that helps implement the SmoothScroll from GSAP.
  * This component will render a div with an id of "smooth-wrapper" and
@@ -15,9 +16,15 @@ export default function PagesWrapper({
 }: {
   children: React.ReactNode;
 }) {
+  const { isRevealed } = useLoading();
   useSmoothScroll();
   return (
-    <div id="smooth-wrapper">
+    <div
+      id="smooth-wrapper"
+      className={
+        isRevealed ? "h-full overflow-auto" : "max-h-screen! overflow-hidden!"
+      }
+    >
       <div id="smooth-content" className="bg-primary-color-darker">
         {children}
       </div>

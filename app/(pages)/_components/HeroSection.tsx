@@ -1,7 +1,14 @@
-import useHeroSectionGSAP from "@/app/hooks/home-page-gsap/useHeroSectionGSAP";
+"use client";
+
+import { useHeroSectionGSAP } from "@/app/hooks/home-page-gsap/useHeroSectionGSAP";
 import Link from "next/link";
+import { HeroCanvas } from "@/app/(pages)/_components/_hero-section-components/HeroSection";
+import { useLoading } from "@/app/utils/LoadingContext";
+import {} from "@/app/(pages)/_components/_hero-section-components/HeroSection";
+
 export default function HeroSection() {
-  useHeroSectionGSAP();
+  const { isRevealed } = useLoading();
+  useHeroSectionGSAP(isRevealed);
   return (
     <section
       id="home-top"
@@ -75,12 +82,8 @@ export default function HeroSection() {
             </li>
           </ul>
         </div>
-        <div className="relative h-60 w-full z-1  tablet:h-150 overflow-hidden">
-          <canvas
-            id="hero-canvas"
-            className="absolute top-35 left-0 tablet:bottom-0"
-            data-speed="0.5"
-          ></canvas>
+        <div className="relative h-60 w-full z-1 tablet:h-150 overflow-hidden">
+          <HeroCanvas />
         </div>
       </div>
     </section>
