@@ -1,8 +1,10 @@
 import UI_Task from "@components/UI_Task";
-import useCodeBlocks from "@/app/hooks/home-page-gsap/vs-code/useCodeBlocks";
-import useCircles from "@/app/hooks/home-page-gsap/vs-code/useCircles";
-import useTasks from "@/app/hooks/home-page-gsap/vs-code/useTasks";
-import useVSHeader from "@/app/hooks/home-page-gsap/vs-code/useVSHeader";
+import {
+  useCodeBlocks,
+  useCircles,
+  useTasks,
+  useVSHeader,
+} from "@/app/hooks/home-page-gsap/useVSCodeSection";
 import { useLoading } from "@/app/utils/LoadingContext";
 
 export default function VsCodeUI() {
