@@ -15,6 +15,9 @@ const nextConfig: NextConfig = {
     ],
     minimumCacheTTL: 2678400,
   },
+  deploymentId: process.env.GITHUB_SHA
+    ? process.env.GITHUB_SHA.substring(0, 32)
+    : undefined,
 };
 
 export default nextConfig;
