@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useGSAP, gsap } from "@utils/gsap/gsap";
 import { useLoading } from "../utils/LoadingContext";
 export default function GlobalLoader() {
   const [isWindowLoaded, setIsWindowLoaded] = useState(false);
