@@ -87,7 +87,7 @@ export default function HeroSection() {
         <div className="relative h-60 w-full z-1 tablet:h-150 overflow-hidden">
           <canvas
             id="hero-canvas"
-            className="absolute top-25 tablet:top-10 left-3 tablet:bottom-0"
+            className="absolute top-25 tablet:top-15 left-3 tablet:bottom-0"
             data-speed="0.5"
           ></canvas>
         </div>

@@ -124,7 +124,7 @@ export const useHeroImageSequence = (isRevealed: boolean) => {
 
         const { placeholderImage, imageURLS, playhead, images } = frameImages();
 
-        function imageSequence(config: ImageSequenceConfig) {
+        const imageSequence = (config: ImageSequenceConfig) => {
           const canvasElement = gsap.utils.toArray(
             config.canvas,
           )[0] as HTMLCanvasElement;
@@ -132,11 +132,25 @@ export const useHeroImageSequence = (isRevealed: boolean) => {
 
           const updateImage = () => {
             const currentImg = images[Math.round(playhead.frame)];
+
             // draw the placeholderImage with blur filter while the current frame still loads
             if (currentImg && !currentImg.complete) {
               ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
               ctx!.filter = "blur(10px)";
               ctx!.drawImage(placeholderImage, 0, 0);
+
+              // add text on canvas
+              ctx!.filter = "blur(0px)"; // Reset filter so text isn't blurry
+              ctx!.fillStyle = "white"; // Change color to match your UI
+              ctx!.font = "20px Arial"; // Adjust size and font family
+              ctx!.textAlign = "center";
+              ctx!.textBaseline = "middle";
+              ctx!.fillText(
+                "Loading Image...",
+                canvasElement.width / 2,
+                canvasElement.height / 2,
+              );
+
               // Only draw if the image is actually loaded/exists
             } else if (currentImg && currentImg.complete) {
               ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
@@ -145,31 +159,42 @@ export const useHeroImageSequence = (isRevealed: boolean) => {
             }
           };
 
+          // Draw placeholder immediately if cached, otherwise on load
+          if (placeholderImage.complete) {
+            updateImage();
+          } else {
+            placeholderImage.onload = updateImage;
+          }
+
           // Map through URLs and create Image objects
-          config.urls.forEach((url) => {
+          config.urls.forEach((url, i) => {
             const img = new Image();
             img.src = url;
+            img.onload = () => {
+              // Only redraw if the loaded image is the one we are currently viewing
+              if (Math.floor(playhead.frame) === i) updateImage();
+            };
             images.push(img);
           });
 
+          updateImage();
           // the animation responsible for the frame animation
           return gsap.to(playhead, {
             frame: images.length - 1,
-            ease: "steps(46)",
+            ease: "none",
             onUpdate: updateImage,
-            immediateRender: true,
             scrollTrigger: config.scrollTrigger,
           });
-        }
+        };
 
         imageSequence({
           urls: imageURLS, // Array of image URLs
           canvas: "#hero-canvas",
           scrollTrigger: {
             trigger: "#hero-canvas",
-            start: 0,
+            start: isSmallScreen ? "top 60%" : "top top",
+            id: "hero-canvas-scroll",
             end: isSmallScreen ? "bottom 90%" : "20% top",
-
             scrub: true,
             invalidateOnRefresh: true,
           },
