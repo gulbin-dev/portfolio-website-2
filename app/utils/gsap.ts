@@ -10,12 +10,8 @@ import {
   ScrollTrigger,
   SplitText,
   DrawSVGPlugin,
-  MorphSVGPlugin,
   ScrollSmoother,
-  GSDevTools,
   MotionPathPlugin,
-  MotionPathHelper,
-  CustomEase,
   ScrambleTextPlugin,
 } from "gsap/all";
 
@@ -26,12 +22,8 @@ gsap.registerPlugin(
   SplitText,
   ScrollTrigger,
   DrawSVGPlugin,
-  MorphSVGPlugin,
   ScrollSmoother,
-  GSDevTools,
   MotionPathPlugin,
-  MotionPathHelper,
-  CustomEase,
   ScrambleTextPlugin,
 );
 
@@ -43,13 +35,9 @@ export {
   SplitText,
   ScrollTrigger,
   DrawSVGPlugin,
-  MorphSVGPlugin,
   ScrollSmoother,
-  GSDevTools,
   useGSAP,
   MotionPathPlugin,
-  MotionPathHelper,
-  CustomEase,
   ScrambleTextPlugin,
 };
 
