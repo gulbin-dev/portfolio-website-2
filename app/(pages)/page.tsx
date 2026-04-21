@@ -3,13 +3,12 @@ import VsCodeUI from "./_components/VsCodeUI";
 import CardSkill from "./_components/CardSkill";
 import HireMe from "./_components/HireMe";
 import HeroSection from "./_components/HeroSection";
-import { ScrollTrigger } from "@utils/gsap/gsap";
-import ScrollReset from "../utils/ScrollReset";
+import ScrollReset from "@utils/ScrollReset";
 
 /** Home page content */
 export default function Home() {
   ScrollReset();
-  ScrollTrigger.refresh();
+
   return (
     <main>
       {/* hero-section */}
