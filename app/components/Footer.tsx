@@ -7,7 +7,13 @@ export default function Footer() {
     <footer className="snap h-full bg-primary-color-darker w-full pb-1">
       <div className="max-w-180 place-self-center w-full px-3">
         <Link href="/" className="text-heading-md px-0! text-white">
-          <Image src="/logo.svg" alt="logo" width={100} height={58} />
+          <Image
+            src="/logo.svg"
+            alt="logo"
+            width={100}
+            height={58}
+            loading="eager"
+          />
         </Link>
         <p className="mt-2">
           Frontend React Web developer focusing on building responsive,
