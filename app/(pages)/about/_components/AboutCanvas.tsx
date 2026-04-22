@@ -88,7 +88,7 @@ export default function AboutCanvas() {
   return (
     <canvas
       id="about-canvas"
-      className="absolute left-3 top-20 tablet:top-12"
+      className="absolute left-3 top-20 tablet-portrait:top-12"
     ></canvas>
   );
 }

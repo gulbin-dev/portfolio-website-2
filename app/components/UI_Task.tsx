@@ -1,8 +1,8 @@
 /** UI component used for VsCodeUI task items */
 export default function UI_Task({ task }: { task: string }) {
   return (
-    <div className="flex flex-col gap-1 tablet:gap-1.5 desktop:gap-2  items-center tablet:items-start">
-      <ul className="flex flex-col gap-1 tablet:gap-1.5 desktop:gap-2 items-center tablet:min-w-45">
+    <div className="flex flex-col gap-1 tablet-portrait:gap-1.5 desktop:gap-2  items-center tablet-portrait:items-start">
+      <ul className="flex flex-col gap-1 tablet-portrait:gap-1.5 desktop:gap-2 items-center tablet-portrait:min-w-45">
         <li>
           <span className="ui-circle"></span>
         </li>

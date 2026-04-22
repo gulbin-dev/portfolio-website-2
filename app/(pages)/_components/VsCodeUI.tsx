@@ -82,7 +82,7 @@ export default function VsCodeUI() {
 
       {/* dark background <div> simialr to vs code */}
       <div className=" bg-[#0F111A] w-full">
-        <div className="max-w-96 place-self-center px-3 flex flex-col py-4 text-heading-md tablet:text-2xl w-full ">
+        <div className="max-w-96 place-self-center px-3 flex flex-col py-4 text-heading-md tablet-portrait:text-2xl w-full ">
           <p id="issue" className="text-[#FC4646]">
             <span id="issue-span" className="text-[#65E913] font-bold">
               Issue:{" "}

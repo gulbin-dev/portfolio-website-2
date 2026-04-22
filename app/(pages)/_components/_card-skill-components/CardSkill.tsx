@@ -9,7 +9,7 @@ export const Video = ({
 }) => {
   return (
     <video
-      className="tablet:max-w-80 aspect-video desktop:max-w-100"
+      className="tablet-portrait:max-w-80 aspect-video desktop:max-w-100"
       muted
       controls
       poster={poster}

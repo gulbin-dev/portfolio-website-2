@@ -7,7 +7,7 @@ export default function PreviewVideo({
 
   return (
     <video
-      className="tablet:max-w-80 desktop:max-w-100"
+      className="tablet-portrait:max-w-80 desktop:max-w-100"
       muted
       controls
       preload="metadata"

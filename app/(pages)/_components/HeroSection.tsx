@@ -5,7 +5,6 @@ import { useLoading } from "@utils/LoadingContext";
 import dynamic from "next/dynamic";
 import useWindowSizeListener from "@hooks/useWindowSizeListener";
 import { useEffect } from "react";
-
 import { gsap, mediaQueries, SplitText, useGSAP } from "@utils/gsap";
 
 const Canvas = dynamic(() =>
@@ -121,17 +120,17 @@ export default function HeroSection() {
       id="home-top"
       className="section w-full h-full overflow-hidden relative linear-bg z-0 tablet-landscape:h-fit"
     >
-      <div className=" place-self-center max-w-180 h-full tablet-portrait:flex tablet-landscape:h-fit!">
+      <div className="place-self-center max-w-180 h-full tablet-portrait:flex tablet-landscape:h-fit!">
         <div className="relative z-1 px-3 pt-10 tablet-portrait:pt-20 h-full">
           <h1
             aria-hidden
-            className="split-words text-pretty text-heading-lg tablet-portrait:text-heading-xl pt-7 tablet-portrait:pt-0"
+            className="split-words text-pretty text-heading-lg tablet-portrait:text-heading-xl pt-7 tablet-portrait:pt-0 desktop:text-heading-md"
           >
             Frontend Developer{" "}
             <span className="relative">
               Building
               <svg
-                className="absolute -bottom-2  tablet:scale-y-50"
+                className="absolute -bottom-2  tablet-portrait:scale-y-50"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 99.98 16.76"
               >

@@ -84,7 +84,7 @@ export default function CardSkill() {
       className="section w-full! h-full relative mt-0! overflow-hidden linear-bg pb-8 text-light-foreground"
     >
       <div className="overflow-hidden">
-        <h2 className="card-skill-header opacity-100 text-heading-lg text-center text-pretty pt-5 tablet:pt-10 pb-1 px-2">
+        <h2 className="card-skill-header opacity-100 text-heading-lg text-center text-pretty pt-5 tablet-portrait:pt-10 pb-1 px-2">
           Building Web Features that can stand out other brands
         </h2>
         <p
@@ -100,7 +100,7 @@ export default function CardSkill() {
         </p>
       </div>
       <div className="container-cards mt-0  max-w-180 place-self-center">
-        <ul className=" flex flex-col px-3 items-center tablet:max-w-80 desktop:max-w-100">
+        <ul className=" flex flex-col px-3 items-center tablet-portrait:max-w-80 desktop:max-w-100">
           <li className="list-card-skill">
             <div className="card-skill">
               <div className="card-description">
@@ -133,7 +133,7 @@ export default function CardSkill() {
                 alt=""
                 width={800}
                 height={450}
-                className="tablet:max-w-80 desktop:max-w-100 object-cover aspect-video"
+                className="tablet-portrait:max-w-80 desktop:max-w-100 object-cover aspect-video"
               />
               <div className="container-video"></div>
             </div>

@@ -33,24 +33,26 @@ export default function About() {
       const mm = gsap.matchMedia();
       mm.add(mediaQueries, (context) => {
         // media queries conditions giving a responsive animation
-        const { isSmallScreen, isMediumScreen, isLargeScreen } =
+        const { isMobilePortraitScreen, isTabletPortraitScreen, isDesktop } =
           context.conditions ?? {};
         ScrollTrigger.defaults({
           toggleActions: "play none none none",
         });
         const smoother = ScrollSmoother.get();
-        if (!isSmallScreen) smoother?.effects().forEach((t) => t.kill());
+        if (!isMobilePortraitScreen)
+          smoother?.effects().forEach((t) => t.kill());
         // list of elements with the class "story-telling" used for horizontal scrolling
-        const storyTellingElements = gsap.utils.toArray(".story-telling");
+        const storyTellingElements =
+          gsap.utils.toArray<HTMLElement[]>(".story-telling");
 
         /**
          * A function to set initial styles for animation
          */
         const gsapSetStyles = () => {
           gsap.set("#paper-plane", { opacity: 0, scale: 0.5 });
-          if (isSmallScreen) gsap.set(".hand-icon", { opacity: 0 });
+          if (isMobilePortraitScreen) gsap.set(".hand-icon", { opacity: 0 });
 
-          if (!isSmallScreen) {
+          if (!isMobilePortraitScreen) {
             gsap.set(".a", {
               x: -50,
             });
@@ -86,10 +88,10 @@ export default function About() {
         };
 
         const scrollHorizontal =
-          !isSmallScreen &&
+          !isMobilePortraitScreen &&
           gsap.to(".tablet-pinned", {
             xPercent:
-              (isMediumScreen ? -20 : isLargeScreen ? -10 : 0) *
+              (isTabletPortraitScreen ? -20 : isDesktop ? -10 : 0) *
               (storyTellingElements.length - 1),
             ease: "none",
             scrollTrigger: {
@@ -100,16 +102,17 @@ export default function About() {
               start: "top top",
               end: () =>
                 "bottom+=" +
-                (document.querySelector(".tablet-pinned") as HTMLDivElement)
+                ((document.querySelector(".tablet-pinned") as HTMLDivElement)
                   ?.offsetWidth +
+                  1600) +
                 "top",
-              // pinSpacing: true,
+              pinSpacing: true,
               scrub: 1,
               invalidateOnRefresh: true,
             },
           });
 
-        if (!isSmallScreen) {
+        if (!isMobilePortraitScreen) {
           ScrollTrigger.create({
             trigger: ".canvas-container",
             id: "canvas",
@@ -128,7 +131,7 @@ export default function About() {
 
         // animation of the "Hi!" word and the hand icon
         const animateIntro = () => {
-          const timeline = isSmallScreen
+          const timeline = isMobilePortraitScreen
             ? gsap.timeline({
                 scrollTrigger: {
                   trigger: ".word-hi",
@@ -157,7 +160,7 @@ export default function About() {
         const animateDrawings = () => {
           const tl = gsap.timeline({
             scrollTrigger: {
-              trigger: isSmallScreen ? ".hand-icon" : "",
+              trigger: isMobilePortraitScreen ? ".hand-icon" : "",
               start: "top center",
             },
           });
@@ -177,7 +180,7 @@ export default function About() {
             yoyo: true,
             ease: "none",
           });
-          if (!isSmallScreen)
+          if (!isMobilePortraitScreen)
             gsap.to("#paper-plane", {
               scrollTrigger: {
                 trigger: ".split-text-story",
@@ -206,7 +209,7 @@ export default function About() {
             scrollTrigger: {
               trigger: ".responsive",
               start: `left ${
-                isMediumScreen ? "70%" : isLargeScreen ? "center" : ""
+                isTabletPortraitScreen ? "70%" : isDesktop ? "center" : ""
               }`,
               end: "right 40%",
               containerAnimation: scrollHorizontal || undefined,
@@ -219,7 +222,11 @@ export default function About() {
                 trigger: ".a",
                 containerAnimation: scrollHorizontal || undefined,
                 start: `right ${
-                  isMediumScreen ? "80%" : isLargeScreen ? "center" : "center"
+                  isTabletPortraitScreen
+                    ? "80%"
+                    : isDesktop
+                      ? "center"
+                      : "center"
                 }`,
                 end: "right left",
               },
@@ -270,7 +277,7 @@ export default function About() {
                 trigger: ".state",
                 containerAnimation: scrollHorizontal || undefined,
                 start: `left ${
-                  isMediumScreen ? "60%" : isLargeScreen ? "center" : ""
+                  isTabletPortraitScreen ? "60%" : isDesktop ? "center" : ""
                 }`,
                 end: "right 40%",
               },
@@ -304,7 +311,7 @@ export default function About() {
               scrollTrigger: {
                 trigger: ".react-icon",
                 start: `left ${
-                  isMediumScreen ? "80%" : isLargeScreen ? "center" : ""
+                  isTabletPortraitScreen ? "80%" : isDesktop ? "center" : ""
                 }`,
                 end: "right 40%",
                 containerAnimation: scrollHorizontal || undefined,
@@ -341,7 +348,7 @@ export default function About() {
                     trigger: ".split-text-story",
                     containerAnimation: scrollHorizontal || undefined,
                     start: `left ${
-                      isMediumScreen ? "70%" : isLargeScreen ? "center" : ""
+                      isTabletPortraitScreen ? "70%" : isDesktop ? "center" : ""
                     }`,
                     end: "right center",
                   },
@@ -375,7 +382,7 @@ export default function About() {
         animateIntro();
         animateDrawings();
         animateTechStack();
-        if (!isSmallScreen) animateStory();
+        if (!isMobilePortraitScreen) animateStory();
       });
     },
     { dependencies: [isRevealed], revertOnUpdate: true },
@@ -384,22 +391,22 @@ export default function About() {
   return (
     <main className="bg-primary-color-darker px-3 mb-4">
       <section id="about-top" className="flex flex-col relative">
-        <div className="canvas-container h-75 tablet:absolute w-full top-0 left-0  z-400 tablet:w-55 tablet:h-screen overflow-hidden">
-          <div className="hidden tablet:block absolute bg-primary-color-darker w-23 h-full"></div>
+        <div className="canvas-container h-75 tablet-portrait:absolute w-full top-0 left-0  z-400 tablet-portrait:w-55 tablet-portrait:h-screen overflow-hidden">
+          <div className="hidden tablet-portrait:block absolute bg-primary-color-darker w-23 h-full"></div>
           <AboutCanvas />
         </div>
         <div className="tablet-pinned relative">
           {/* this <div> is used only for animation */}
-          <div className="relative tablet:top-15 tablet:flex">
+          <div className="relative tablet-portrait:top-15 tablet-portrait:flex">
             {" "}
-            <div className="hidden tablet:block min-w-40 min-h-15"></div>{" "}
-            <div className="flex flex-col tablet:grid tablet:auto-rows-auto items-center tablet:max-h-20 tablet:auto-cols-min tablet:w-screen tablet:min-w-50 tablet:gap-y-5">
+            <div className="hidden tablet-portrait:block min-w-40 min-h-15"></div>{" "}
+            <div className="flex flex-col tablet-portrait:grid tablet-portrait:auto-rows-auto items-center tablet-portrait:max-h-20 tablet-portrait:auto-cols-min tablet-portrait:w-screen tablet-portrait:min-w-50 tablet-portrait:gap-y-5">
               {" "}
-              <h1 className="text-heading-lg mt-10 tablet:text-heading-xl col-start-1">
+              <h1 className="text-heading-lg mt-10 tablet-portrait:text-heading-xl col-start-1">
                 About Me
               </h1>
               <p
-                className="inline-block place-self-center tablet:text-3xl tablet:truncate col-start-1"
+                className="inline-block place-self-center tablet-portrait:text-3xl tablet-portrait:truncate col-start-1"
                 aria-hidden="true"
               >
                 <span className="flex gap-1 justify-center">
@@ -409,20 +416,20 @@ export default function About() {
                     <FaHandPaper className="hand-icon z-300" />
                   </span>{" "}
                 </span>{" "}
-                <span className="block tablet:hidden">
+                <span className="block tablet-portrait:hidden">
                   I&apos;m{" "}
                   <span className="text-action-color font-bold">
                     Joshua Glenn R. Gulbin
                   </span>
                 </span>
-                <span className="hidden tablet:block">
+                <span className="hidden tablet-portrait:block">
                   {" "}
                   <span className="">I&apos;m</span>{" "}
                   <span className="name1 text-col-neutral-1 inline-block font-bold min-w-50 overflow-clip"></span>{" "}
                 </span>
               </p>
               <p
-                className="inline-block text-center h-full tablet:hidden col-start-1"
+                className="inline-block text-center h-full tablet-portrait:hidden col-start-1"
                 aria-hidden="true"
               >
                 {" "}
@@ -448,7 +455,7 @@ export default function About() {
               </p>
             </div>
             <div
-              className="hidden text-center relative tablet:flex gap-2 text-3xl items-end min-h-30 h-full"
+              className="hidden text-center relative tablet-portrait:flex gap-2 text-3xl items-end min-h-30 h-full"
               aria-hidden="true"
             >
               {" "}
@@ -483,8 +490,8 @@ export default function About() {
                 </span>
               </span>{" "}
               {/*  SVG paper plane */}
-              <div className="hidden tablet:block absolute left-92 top-25 min-w-20 min-h-30">
-                <svg className="w-full h-full scale-65 -rotate-45 tablet:scale-100 tablet:rotate-0">
+              <div className="hidden tablet-portrait:block absolute left-92 top-25 min-w-20 min-h-30">
+                <svg className="w-full h-full scale-65 -rotate-45 tablet-portrait:scale-100 tablet-portrait:rotate-0">
                   <path
                     id="path"
                     fill="none"
@@ -521,8 +528,8 @@ export default function About() {
             JavaScript/TypeScript.
           </p>
         </div>
-        <div className="relative flex flex-col items-center gap-x-2 mt-6 tablet:mt-40">
-          <h2 className="text-heading-lg! tablet:text-heading-xl!">
+        <div className="relative flex flex-col items-center gap-x-2 mt-6 tablet-portrait:mt-40">
+          <h2 className="text-heading-lg! tablet-portrait:text-heading-xl!">
             Reach out!
           </h2>
           <ul className="text-4xl flex gap-3 mt-2">
