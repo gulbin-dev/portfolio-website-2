@@ -91,7 +91,7 @@ export const Canvas = () => {
           canvas: "#hero-canvas",
           scrollTrigger: {
             trigger: "#hero-canvas",
-            start: isMobilePortraitScreen ? "top 60%" : "top-=100 top",
+            start: isMobilePortraitScreen ? "top 60%" : "top top",
             id: "hero-canvas-scroll",
             end: isMobilePortraitScreen ? "bottom 90%" : "20% top",
             scrub: true,
@@ -106,7 +106,7 @@ export const Canvas = () => {
   return (
     <canvas
       id="hero-canvas"
-      className="absolute tablet-portrait:max-w-none top-25 mobile-landscape:left-1/2 mobile-landscape:-translate-x-1/2! tablet-portrait:left-0 tablet-portrait:top-0 tablet-portrait:translate-x-0! desktop:left-1/2"
+      className="absolute tablet-portrait:max-w-none top-25 mobile-landscape:left-1/2 mobile-landscape:-translate-x-1/2! tablet-portrait:left-0 tablet-portrait:top-15 tablet-portrait:translate-x-0! desktop:left-1/2"
       data-speed="0.5"
     ></canvas>
   );

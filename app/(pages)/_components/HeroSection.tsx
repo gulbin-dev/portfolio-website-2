@@ -29,6 +29,7 @@ export default function HeroSection() {
         (context) => {
           const { isReduceMotion } = context.conditions ?? {};
           /** handle animation of CTA buttons */
+          gsap.set(".hero-p", { opacity: 0, y: 100 });
           const animateCTA = () => {
             const keyframes = isReduceMotion
               ? {
@@ -45,8 +46,8 @@ export default function HeroSection() {
               keyframes: keyframes,
               scrollTrigger: {
                 trigger: ".list-discover-button",
-                start: "top 95%",
-                end: "bottom bottom",
+                start: "bottom bottom",
+                end: "bottom+=150 bottom",
               },
             });
 
@@ -55,8 +56,8 @@ export default function HeroSection() {
               keyframes: keyframes,
               scrollTrigger: {
                 trigger: ".list-about-me-button",
-                start: "top 95%",
-                end: "bottom bottom",
+                start: "bottom bottom",
+                end: "bottom+=150 bottom",
               },
             });
           };
@@ -106,7 +107,12 @@ export default function HeroSection() {
               }
             });
           };
-
+          gsap.to(".hero-p", {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power4.out",
+          });
           animateCTA();
           animateSplitText();
         },
@@ -118,10 +124,10 @@ export default function HeroSection() {
   return (
     <section
       id="home-top"
-      className="section w-full h-full overflow-hidden relative linear-bg z-0 tablet-landscape:h-fit"
+      className="section w-full h-full overflow-hidden relative linear-bg z-0 tablet-portrait:h-screen"
     >
       <div className="place-self-center max-w-180 h-full tablet-portrait:flex tablet-landscape:h-fit!">
-        <div className="relative z-1 px-3 pt-10 tablet-portrait:pt-20 h-full">
+        <div className="relative z-1 px-3 pt-10 tablet-portrait:pt-15 h-full">
           <h1
             aria-hidden
             className="split-words text-pretty text-heading-lg tablet-portrait:text-heading-xl pt-7 tablet-portrait:pt-0 desktop:text-heading-md"
@@ -153,7 +159,7 @@ export default function HeroSection() {
           <h1 className="sr-only">
             Frontend Developer Building Predictable React Interfaces
           </h1>
-          <p className="fade-in-up mt-4 tablet-portrait:mt-3">
+          <p className="hero-p mt-4 tablet-portrait:mt-3">
             Helping teams deliver high-performance React applications with a
             focus on accessibility and SEO.
           </p>
@@ -188,7 +194,7 @@ export default function HeroSection() {
             </li>
           </ul>
         </div>
-        <div className="relative! h-60 w-full z-1 overflow-hidden tablet-portrait:h-71 tablet-portrait:max-h-71 tablet-portrait:inset-0! tablet-landscape:h-71">
+        <div className="relative! h-60 w-full z-1 overflow-hidden tablet-portrait:h-screen tablet-portrait:inset-0!">
           <Canvas />
         </div>
       </div>
