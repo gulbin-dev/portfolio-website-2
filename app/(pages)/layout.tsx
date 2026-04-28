@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-gulbindev.vercel.app"),
   title: "GulbinDev | Frontend React Web Developer Portfolio",
   description:
     "A web developer portfolio of Joshua Glenn R. Gulbin. A frontend react web developer focusing on building a maintainable, user-friendly, seo-friendly website.",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "GulbinDev Portfolio",
     type: "website",
     images: {
-      url: "https://portfolio-gulbindev.vercel.app/og/website.jpg",
+      url: "/og/website.jpg",
       width: 1200,
       height: 630,
       alt: "GulbinDev Portfolio",
