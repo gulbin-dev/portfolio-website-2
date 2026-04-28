@@ -42,19 +42,39 @@ export default function AboutCanvas() {
                 ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
                 ctx!.filter = "blur(10px)";
                 ctx!.drawImage(placeholderImage, 0, 0);
-                // Only draw if the image is actually loaded/exists
-              } else if (currentImg && currentImg.complete) {
+                // add text on canvas
+                ctx!.filter = "blur(0px)";
+                ctx!.fillStyle = "white";
+                ctx!.font = "20px Arial";
+                ctx!.textAlign = "center";
+                ctx!.textBaseline = "middle";
+                ctx!.fillText(
+                  "Loading Frame Image...",
+                  canvasElement.width / 2,
+                  canvasElement.height / 2,
+                );
+              }
+              // Only draw if the image is actually loaded/exists
+              else if (currentImg && currentImg.complete) {
                 ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
                 ctx!.filter = "blur(0px)";
                 ctx!.drawImage(currentImg, 0, 0);
               }
             };
+            // Draw placeholder immediately if cached, otherwise on load
+            if (placeholderImage.complete) {
+              updateImage();
+            } else {
+              placeholderImage.onload = updateImage;
+            }
 
             images.forEach((img, i) => {
               img.onload = () => {
                 if (Math.floor(playhead.frame) === i) updateImage();
               };
             });
+
+            updateImage();
 
             // the animation responsible for the frame animation
             return gsap.to(playhead, {
@@ -78,7 +98,7 @@ export default function AboutCanvas() {
         },
       );
     },
-    { dependencies: [], revertOnUpdate: true },
+    { dependencies: [] },
   );
 
   return (

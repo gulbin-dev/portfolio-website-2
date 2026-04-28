@@ -45,13 +45,13 @@ export function Canvas() {
               ctx!.textAlign = "center";
               ctx!.textBaseline = "middle";
               ctx!.fillText(
-                "Loading Image...",
+                "Loading Frame Image...",
                 canvasElement.width / 2,
                 canvasElement.height / 2,
               );
-
-              // Only draw if the image is actually loaded/exists
-            } else if (currentImg && currentImg.complete) {
+            }
+            // Only draw if the image is actually loaded/exists
+            else if (currentImg && currentImg.complete) {
               ctx!.clearRect(0, 0, canvasElement.width, canvasElement.height);
               ctx!.filter = "blur(0px)";
               ctx!.drawImage(currentImg, x, 0);
@@ -100,7 +100,7 @@ export function Canvas() {
   return (
     <canvas
       id="hero-canvas"
-      className="absolute tablet-portrait:max-w-none top-25 mobile-landscape:left-1/2 mobile-landscape:-translate-x-1/2! tablet-portrait:left-0 tablet-portrait:top-15 tablet-portrait:translate-x-0! "
+      className="absolute tablet-portrait:max-w-none top-25 mobile-landscape:left-1/2 mobile-landscape:-translate-x-1/2! tablet-portrait:left-0 tablet-portrait:top-0 tablet-portrait:translate-x-0! "
       data-speed="0.5"
       width={420}
       height={720}
