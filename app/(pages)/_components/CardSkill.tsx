@@ -142,10 +142,12 @@ export default function CardSkill() {
                 </p>
               </div>
               <Image
-                src="/accessibility.png"
+                src="/accessibility.webp"
                 alt=""
                 width={800}
                 height={450}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAABCAYAAADn9T9+AAAAEElEQVR42mMMNZr4n4EIAABPmQIZAUAfkQAAAABJRU5ErkJggg=="
                 className="tablet-portrait:max-w-80 desktop:max-w-100 object-cover aspect-video"
               />
               <div className="container-video"></div>
