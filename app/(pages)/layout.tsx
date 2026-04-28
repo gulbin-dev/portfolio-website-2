@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://portfolio-gulbindev.vercel.app/og/website.png",
+        url: "https://portfolio-gulbindev.vercel.app/og/website.webp",
         width: 800,
         height: 600,
         alt: "GulbinDev Portfolio",
