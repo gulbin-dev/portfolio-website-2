@@ -371,7 +371,7 @@ export default function About() {
   return (
     <main className="bg-primary-color-darker mb-4">
       <section id="about-top" className="flex flex-col relative">
-        <div className="canvas-container h-90 w-full top-0 left-0 overflow-hidden z-400  tablet-portrait:absolute tablet-portrait:w-55 tablet-portrait:h-screen ">
+        <div className="canvas-container h-90 w-full top-0 left-0 overflow-hidden z-20  tablet-portrait:absolute tablet-portrait:w-55 tablet-portrait:h-90 ">
           <div className="hidden tablet-portrait:block absolute bg-primary-color-darker w-[15vw] h-80"></div>
           <AboutCanvas />
         </div>
@@ -379,7 +379,7 @@ export default function About() {
           {/* this <div> is used only for animation */}
           <div className="relative tablet-portrait:top-15 tablet-portrait:flex">
             {" "}
-            <div className="hidden tablet-portrait:block min-w-40 min-h-15"></div>{" "}
+            <div className="hidden tablet-portrait:block min-w-60 min-h-15"></div>{" "}
             <div className="flex mt-15 flex-col tablet-portrait:grid tablet-portrait:auto-rows-auto items-center tablet-portrait:max-h-20 tablet-portrait:auto-cols-min tablet-portrait:mt-0 tablet-portrait:w-screen tablet-portrait:min-w-50 tablet-portrait:gap-y-5">
               {" "}
               <h1 className="text-heading-lg mt-10 tablet-portrait:text-heading-xl col-start-1">

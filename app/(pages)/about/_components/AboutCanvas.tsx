@@ -33,7 +33,7 @@ export default function AboutCanvas() {
             const ctx = canvasElement.getContext("2d");
             if (isMobilePortraitScreen) canvasElement.style.scale = "1";
             else if (isTabletPortraitScreen) canvasElement.style.scale = "0.6";
-            else if (isDesktopScreen) canvasElement.style.scale = "0.7";
+            else if (isDesktopScreen) canvasElement.style.scale = "1";
 
             const updateImage = () => {
               const currentImg = images[Math.round(playhead.frame)];
@@ -104,7 +104,7 @@ export default function AboutCanvas() {
   return (
     <canvas
       id="about-canvas"
-      className="absolute left-0! top-20 tablet-portrait:top-0 origin-left"
+      className="absolute left-0! top-20 tablet-portrait:top-0 desktop:top-10 origin-left"
       width={420}
       height={720}
     ></canvas>

@@ -113,10 +113,10 @@ export default function HeroSection() {
     <section
       ref={heroSectionRef}
       id="home-top"
-      className="section w-full h-full overflow-hidden relative linear-bg z-0 tablet-portrait:h-screen"
+      className="section w-full h-full overflow-hidden relative linear-bg z-0 tablet-portrait:h-90"
     >
-      <div className="flex flex-col place-self-center max-w-180 h-full tablet-portrait:flex-row tablet-landscape:h-fit!">
-        <div className="z-1 px-3 pt-10 tablet-portrait:pt-15 h-full">
+      <div className="flex flex-col place-self-center max-w-180 h-full tablet-portrait:flex-row tablet-landscape:h-fit! tablet-portrait:justify-center">
+        <div className="z-1 px-3 pt-10 h-full tablet-portrait:pt-15 tablet-portrait:max-w-1/2">
           <h1 aria-hidden className="hero-header hero-header">
             Frontend Developer{" "}
             <span className="relative">
@@ -180,7 +180,7 @@ export default function HeroSection() {
             </li>
           </ul>
         </div>
-        <div className="relative top-0 left-0 h-60 min-w-53 z-1 overflow-hidden tablet-portrait:h-screen">
+        <div className="relative top-0 left-0 h-60 min-w-53 z-1 overflow-hidden tablet-portrait:h-90">
           <Canvas />
         </div>
       </div>

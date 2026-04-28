@@ -112,8 +112,8 @@ export default function CardSkill() {
           codebase.
         </p>
       </div>
-      <div className="container-cards mt-0  max-w-180 place-self-center">
-        <ul className=" flex flex-col px-3 items-center tablet-portrait:max-w-80 desktop:max-w-100">
+      <div className="mt-0 max-w-180 place-self-center">
+        <ul className="flex flex-col px-3 items-center tablet-portrait:max-w-80 desktop:max-w-100">
           <li className="list-card-skill">
             <div className="card-skill">
               <div className="card-description">
