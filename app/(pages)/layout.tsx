@@ -28,14 +28,12 @@ export const metadata: Metadata = {
     url: "https://portfolio-gulbindev.vercel.app/",
     siteName: "GulbinDev Portfolio",
     type: "website",
-    images: [
-      {
-        url: "https://portfolio-gulbindev.vercel.app/og/website.webp",
-        width: 800,
-        height: 600,
-        alt: "GulbinDev Portfolio",
-      },
-    ],
+    images: {
+      url: "https://portfolio-gulbindev.vercel.app/og/website.jpg",
+      width: 1200,
+      height: 630,
+      alt: "GulbinDev Portfolio",
+    },
   },
 
   keywords: [
