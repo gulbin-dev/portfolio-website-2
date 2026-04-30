@@ -191,6 +191,7 @@
   }
 
   .footer-nav ul {
+    font-size: 32px;
     @variant tablet-portrait {
       @apply text-5xl;
     }
